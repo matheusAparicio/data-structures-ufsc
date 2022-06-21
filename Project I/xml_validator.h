@@ -5,7 +5,9 @@
 
 using namespace std;
 
+// Função feita para pegar a tag completa quando um '<' for encontrado.
 string getTag(string line) {
+
     string tag = "";
     for (int i = 0; i < line.length(); i++) {
         if (line[i] != '>') {
@@ -15,16 +17,23 @@ string getTag(string line) {
             break;
         }
     }
+
     return tag;
+
 }
 
+// Função para converter uma tag de encerramento para uma de abertura.
 string convertClosingToOpeningTag(string closingTag) {
+
     string convertedTag = '<' + closingTag.substr(2);
     return convertedTag;
+
 }
 
+//Função para validar arquivos XML.
 bool xmlValidator(char fileName[100]) {
 
+    // Variáveis declaração de algumas variáveis.
     int lineCount = 0;
     structures::ArrayStack<string> arrayStack(10);
     string line;
@@ -33,11 +42,11 @@ bool xmlValidator(char fileName[100]) {
     while (getline(in, line)) {
         
         for (int i = 0; i < line.size(); i++) {
-            if (line[i] == '<') {
-                if (line[i+1] != '/') {
+            if (line[i] == '<') { // Se encontrar um '<'.
+                if (line[i+1] != '/') { // Se for uma tag de abertura.
                     arrayStack.push(getTag(line.substr(i)));
-                } else {
-                    if (arrayStack.size() < 1 || convertClosingToOpeningTag(getTag(line.substr(i))) != arrayStack.top()) {
+                } else { // Se for uma tag de encerramento.
+                    if (arrayStack.size() < 1 || convertClosingToOpeningTag(getTag(line.substr(i))) != arrayStack.top()) { // Se a pilha estiver vazia ou o topo da pilha ser diferente da tag sendo fechada.
                         return 0;
                     } else {
                         arrayStack.pop();
@@ -52,5 +61,7 @@ bool xmlValidator(char fileName[100]) {
     if (arrayStack.size() > 0) {
         return 0;
     }
+
     return 1;
+
 }
