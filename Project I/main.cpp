@@ -3,7 +3,7 @@
 
 int main() {
 
-    char xmlfilename[100] = "datasets/dataset01.xml";
+    char xmlfilename[100] = "datasets/dataset06.xml";
 
     //std::cin >> xmlfilename;  // entrada
     
