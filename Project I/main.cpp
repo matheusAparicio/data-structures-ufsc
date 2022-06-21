@@ -1,13 +1,13 @@
 #include <iostream>
-#include "xml_validator.h"
+#include "xml_component_counter.h"
 
 int main() {
 
-    char xmlfilename[100] = "datasets/dataset02.xml";
+    char fileName[100] = "datasets/dataset01.xml";
 
-    //std::cin >> xmlfilename;  // entrada
+    // std::cin >> xmlfilename;  // entrada
     
-    std::cout << xmlValidator(xmlfilename) << std::endl;
+    xmlComponentCounter(fileName);
 
     return 0;
 }
