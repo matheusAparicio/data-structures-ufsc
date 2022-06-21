@@ -1,16 +1,13 @@
 #include <iostream>
+#include "xml_validator.h"
 
 int main() {
 
-    char xmlfilename[100];
+    char xmlfilename[100] = "datasets/dataset01.xml";
 
-    std::cin >> xmlfilename;  // entrada
+    //std::cin >> xmlfilename;  // entrada
     
-    /*
-     
-       COLOQUE SEU CODIGO AQUI
-    
-    */
+    std::cout << xmlValidator(xmlfilename) << std::endl;
 
     std::cout << xmlfilename << std::endl;  // esta linha deve ser removida
 
