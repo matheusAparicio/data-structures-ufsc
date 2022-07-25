@@ -3,9 +3,9 @@
 
 int main() {
 
-    char fileName[100] = "datasets/dataset01.xml";
+    char fileName[100];
 
-    // std::cin >> xmlfilename;  // entrada
+    std::cin >> fileName;  // entrada
     
     xmlComponentCounter(fileName);
 
